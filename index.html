@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPORTIFY</title>
+    <link  href="css/style.css" reL="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="sidebar">
+<div class="sidebar-wraper">
+<div class="sidebar__logo">
+<img src="/img/spotify-branco-1-1.png">
+</div><!--logo-->
+<div class="sidebar__menu">
+<a class="sidebar__menu__selecionado" href="#"><i class="fas fa-home"></i>Inicio</a>
+<a href="#"><i class="fas fa-search"></i>Buscar</a>
+<a href="#"><i class="fas fa-databases"></i>Biblioteca</a>
+</div><!--menu-->
+
+<div class="sidebar__menu">
+<p class="sidebar__menu__title">Playlists</p>
+<div class="sidebar__menu__item">
+ <div class="sidebar__menu__item__componente">
++
+</div><!--componente-->   
+<span>Criar Playlists</span>
+</div><!--menu-item-->
+
+<div class="sidebar__menu__item">
+    <div class="sidebar__menu__componente">
+   <!--colocar img depois do coração-->
+   </div><!--componente-->   
+   <span>Musicas Curtidas</span>
+   </div><!--menu-item-->
+</div><!--sidebar_menu-->
+<div class="sidebar__playlists">
+<a href="#">Playlist 1</a> 
+<a href="#">Playlist 2</a>
+<a href="#">Playlist 3</a>
+<a href="#">Playlist 4</a>    
+</div><!--playlist-->
+
+<div class="sidebar__playlists">
+    <a href="#">Playlist 5</a> 
+    <a href="#">Playlist 6</a>
+    <a href="#">Playlist 7</a>
+    <a href="#">Playlist 8</a>    
+    </div><!--playlist-->
+
+    <div class="sidebar__playlists">
+        <a href="#">Playlist 9</a> 
+        <a href="#">Playlist 10</a>
+        <a href="#">Playlist 11</a>
+        <a href="#">Playlist 12</a>    
+        </div><!--playlist-->
+
+</div>
+
+</div><!--siderbar-->
+
+<div class="main">
+<div class="main-wraper"><!--scrollbar funcional kk-->
+<div class="main_row">
+<div class="main_row_title"><h2>Paradas</h2></div><!--row_title-->
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+ <div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+<img src="" placeholder="">
+<h3>50 mais tocadas</h3>
+<p>Descrição da Musica</p>
+</div><!--col-->
+
+<div class="main_col">
+ <img src="" placeholder="">
+ <h3>50 mais tocadas</h3>
+ <p>Descrição da Musica</p>
+</div><!--col-->
+<div class="main_row">
+    <div class="main_row_title"><h2>Minhas musicas</h2></div><!--row_title-->
+    <div class="main_col" data-image="img/coracao.png" data-artist="Vintage Culture" data-song="rich n young" data-file="assets/overture.mp3">
+    <h3>Vintage Culture</h3>
+    <p>rich n young</p>
+    </div><!--col-->
+    
+  
+    
+</div><!--row-->
+</div><!--wraper-->
+</div><!--main-->
+<div class="player">
+<div class="player_artist">
+
+</div>
+<div class="player_control">
+<div class="player_control_button">
+ <a href=""><i class="fas fa-backward"></i></a> 
+ <a style="display: none;" id="pauseBtn" href="#"><i class="far fa-pause-circle"></i></a>
+ <a id="playBtn" href="#"><i class="far fa-play-circle"></i></a>
+ <a href=""><i class="fas fa-forward"></i></a>  
+</div>
+<div class="player_control_progress">
+<div style="width:10%;" class="player_control_progress_2"></div>
+</div><!--progresso-->
+</div><!--control-->
+</div><!--player-->
+
+<audio id="audioplayer" style="position:absolute;left:0;
+top:0; z-index: -999; opacity: 0;" controls=""></audio>   
+
+<script src="js/all.min.js"></script> <!--para incluir icones-->
+<script>
+var audioPlayer = document.getElementById('audioplayer');
+var loaded = false; // para o pause funcionar no safari
+document.getElementById('pauseBtn').addEventListener('click',(e)=>{
+e.preventDefault();
+var playBtn = document.getElementById('playBtn');
+var pauseBtn = document.getElementById('pauseBtn');
+playBtn.style.display = "inline";
+pauseBtn.style.display = "none";
+return false;
+});
+const playSong = (file) => {
+if(loaded == false){ //validação para não bugar no safari,primeira vez que você carrega o arquivo
+audioPlayer.innerHTML =`<source src"`+file+`" type="audio/mp3"/>`;
+loaded = true;
+}
+audioPlayer.play();
+playBtn.style.display = "none";
+pauseBtn.style.display = "inline";
+}
+document.querySelectorAll('.main_col').forEach(item =>{
+item.addEventListener('click',event=>{
+let image = item.getAttribute('data-image');
+let artist = item.getAttribute('data-artist');
+let song = item.getAttribute('data-song');
+let file = item.getAttribute('data-file');
+
+let playerArtistComponent = document.getElementsByClassName('player_artist');
+playerArtistComponent[0].innerHTML = `
+<img src="`+image+`" />
+<h3>`+artist+`<br/><span>`+song+`</span></h3>
+`;
+playSong(file);
+})
+});
+</script>
+</body>
+</html>
